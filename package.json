@@ -4,6 +4,7 @@
   "description": "Setup sanitizations for object properties.",
   "scripts": {
     "test": "jest",
+    "watch-test": "jest --watchAll",
     "test-cov": "jest --coverage --runInBand --forceExit",
     "docs": "documentation readme ./src/*.js --section=API",
     "lint": "eslint src test",
@@ -33,6 +34,7 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^25.1.0"
   },
@@ -52,5 +54,8 @@
     "index.d.ts"
   ],
   "main": "build/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash.get": "^4.4.2"
+  }
 }
