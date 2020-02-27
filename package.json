@@ -1,0 +1,23 @@
+{
+  "name": "sanitizations",
+  "version": "1.0.0",
+  "description": "Setup sanitizations for object properties.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LSVH/sanitizations.git"
+  },
+  "keywords": [
+    "santize",
+    "object"
+  ],
+  "author": "LSVH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LSVH/sanitizations/issues"
+  },
+  "homepage": "https://github.com/LSVH/sanitizations#readme"
+}
