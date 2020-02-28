@@ -2,13 +2,19 @@ export default class Schema {
     constructor(instructions?: SchemaInstructions);
 
     sanitize(input: object): object;
+    path(propName: string): Property;
 }
 
 interface SchemaInstructions {
-    [key: string]: Rule
+    [key: string]: Property
 }
 
-type Rule = SanitizerDefinition;
+export class Property {
+    constructor(name: string, definition?: SanitizerDefinition);
+
+    sanitize(input: any): any;
+    sanitizeObject(input: object): object;
+}
 
 interface SanitizerDefinition {
     remove: RemoveSanitizer,
