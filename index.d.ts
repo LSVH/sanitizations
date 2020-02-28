@@ -2,6 +2,7 @@ export default class Schema {
     constructor(instructions?: SchemaInstructions);
 
     sanitize(input: object): object;
+
     path(propName: string): Property;
 }
 
@@ -13,6 +14,7 @@ export class Property {
     constructor(name: string, definition?: SanitizerDefinition);
 
     sanitize(input: any): any;
+
     sanitizeObject(input: object): object;
 }
 
@@ -22,11 +24,11 @@ interface SanitizerDefinition {
     convert: ConvertSanitizer
 }
 
-type RemoveSanitizer = RegExp;
+type RemoveSanitizer = string | RegExp;
 
 interface FormatSanitizer {
-    from: RegExp,
-    to: string | number,
+    from: string | RegExp,
+    to: string | number | Function,
 }
 
 interface ConvertSanitizer {
