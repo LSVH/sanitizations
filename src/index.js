@@ -1,4 +1,5 @@
 import Sanitizers from './sanitizers.js';
+import Property from "./property";
 
 /**
  * A Schema defines the configurations of how objects should be sanitized.
@@ -40,27 +41,52 @@ import Sanitizers from './sanitizers.js';
  *
  * const actual = schema.sanitize(subject);
  *
- * assertTrue(actual.title === expected.title);
- * assertTrue(actual.slug === expected.slug);
+ * expect(actual).toMatchObject(expected);
  *
  * @param {Object} [instructions] - instructions on how to sanitize
  */
 export default class Schema {
   constructor(instructions = {}) {
-    this.instructions = instructions;
+    this.instructions = mapInstructionsToProperty(instructions);
     this.sanitizers = Object.assign({}, Sanitizers);
   }
 
   /**
+   * Sanitize an object according to the applied schema.
+   *
    * @param {Object} [input] - object to sanitize
    * @returns {Object} a sanitized object
    */
   sanitize(input) {
-    input != null && Object.keys(input).map(k =>
-      k in this.instructions && Object.keys(this.instructions[k]).map(i => {
-        if (i in this.sanitizers) input[k] = this.sanitizers[i](input[k], this.instructions[k][i]);
-      })
-    );
+    input != null && typeof input === 'object' && Object.keys(this.instructions).map(k => {
+      if (k in input) input[k] = this.instructions[k].sanitize(input[k]);
+    });
     return input;
   }
+
+  /**
+   * Get a property from the schema.
+   *
+   * @param {string} propName - the property to select
+   * @returns {Object} the property of the schema
+   */
+  path(propName) {
+    return propName in this.instructions ? this.instructions[propName] : new Property(propName);
+  }
+}
+
+/**
+ * Convert all plain JS objects to objects of the Property class.
+ *
+ * @param {Object} instructions - object with properties
+ * @returns {Object} object of properties with the supplied instructions
+ */
+function mapInstructionsToProperty(instructions) {
+  const output = {};
+  instructions != null && Object.keys(instructions).map(k => {
+    if (k in instructions && typeof instructions[k] === 'object') {
+      output[k] = new Property(k, instructions[k]);
+    }
+  });
+  return output;
 }

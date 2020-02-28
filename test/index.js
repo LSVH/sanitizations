@@ -38,7 +38,6 @@ describe('Schema', () => {
 
     const actual = schema.sanitize(subject);
 
-    expect(actual.title).toBe(expected.title);
-    expect(actual.slug).toBe(expected.slug);
+    expect(actual).toMatchObject(expected);
   });
 });
