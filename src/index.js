@@ -52,7 +52,7 @@ export default class Schema {
   }
 
   /**
-   * Sanitize an object according to the applied schema.
+   * Sanitize an object according to the instructions applied to the schema.
    *
    * @param {Object} [input] - object to sanitize
    * @returns {Object} a sanitized object
