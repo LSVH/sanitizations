@@ -1,7 +1,7 @@
 {
   "name": "sanitizations",
   "version": "1.0.0",
-  "description": "Setup sanitizations for object properties.",
+  "description": "Setup sanitization for a specific object structure.",
   "scripts": {
     "test": "jest",
     "watch-test": "jest --watchAll",
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/LSVH/sanitizations#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "babel-jest": "^25.1.0",
