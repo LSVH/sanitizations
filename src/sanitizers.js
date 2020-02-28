@@ -1,6 +1,8 @@
+const isString = v => typeof v === 'string';
+
 const Sanitizers = {
-  remove: (value, regex) => value.replace(regex, ''),
-  transform: (value, { from, to }) => value.replace(from, to),
+  remove: (value, regex) => isString(value) ? value.replace(regex, '') : value,
+  transform: (value, { from, to }) => isString(value) ? value.replace(from, to) : value,
   convert: (value, func) => func(value)
 };
 
