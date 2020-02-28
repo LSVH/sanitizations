@@ -1,6 +1,6 @@
-# Sanitization
+# Sanitizations
 
-Setup sanitizations for object properties.
+Setup sanitization for a specific object structure.
 
 # API
 
