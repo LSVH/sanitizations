@@ -77,7 +77,7 @@ expect(actual).toMatchObject(expected);
 
 ### sanitize
 
-Sanitize an object according to the applied schema.
+Sanitize an object according to the instructions applied to the schema.
 
 #### Parameters
 
